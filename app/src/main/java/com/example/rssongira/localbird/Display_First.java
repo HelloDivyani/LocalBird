@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 /**
  * Created by RSSongira on 4/1/2017.
@@ -121,9 +122,11 @@ public class Display_First extends AppCompatActivity {
                     for (int i = 0; i < contacts.length(); i++) {
                         JSONObject c = contacts.getJSONObject(i);
                         plag = c.getJSONObject("geometry").getJSONObject("location").getString("lat");
-                        plng = c.getJSONObject("geometry").getJSONObject("location").getString("lat");
+                        plng = c.getJSONObject("geometry").getJSONObject("location").getString("lng");
                         id = c.getString("place_id");
                        b7.putString(String.valueOf(i),id);
+                        b7.putString(String.valueOf(i)+"lag",plag);
+                        b7.putString(String.valueOf(i)+"lng",plng);
                         String name = c.getString("name");
                         //String rating = c.getString("rating");
                          icon_url = c.getString("icon");
@@ -193,11 +196,22 @@ public class Display_First extends AppCompatActivity {
                 public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 
                String PLACE_ID = b7.getString(String.valueOf(arg2));
+                    String pplag = b7.getString(String.valueOf(arg2)+"lag");
+                    String pplng = b7.getString(String.valueOf(arg2)+"lng");
                     //Toast.makeText(Display_First.this,"Lets Check ",Toast.LENGTH_SHORT).show();
                    Intent i=new Intent(Display_First.this, Details_Main.class);
-                    i.putExtra("PLACE_ID", PLACE_ID);
+                   // i.putExtra("PLACE_ID", PLACE_ID);
+                    //i.putExtra("plag",pplag);
+                    //i.putExtra("plng",pplng);
                     //i.putExtras(b7);
-                   startActivity(i);
+                    Bundle b11 =new Bundle();
+                    b11.putString("PLACE_ID",PLACE_ID);
+                    b11.putString("plag",pplag);
+                    b11.putString("plng",pplng);
+                    i.putExtras(b11);
+                    startActivity(i);
+
+//                   startActivity(i);
                 }
             });
 

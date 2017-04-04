@@ -39,6 +39,8 @@ import java.util.HashMap;
 public class Details_Main extends FragmentActivity implements OnMapReadyCallback {
     String lat;
     String lng;
+    String pl;
+    String pln;
     GoogleMap myGoogleMap;
     TextView tname,tplace;
     private String TAG = Details_Main.class.getSimpleName();
@@ -75,9 +77,11 @@ public class Details_Main extends FragmentActivity implements OnMapReadyCallback
         //setContentView(R.layout.placesdetails_list);
         tname=(TextView)findViewById(R.id.name);
         tplace=(TextView)findViewById(R.id.place_id);
-
-        Id = getIntent().getExtras().getString("PLACE_ID");
-
+        Bundle bundle = getIntent().getExtras();
+        Id = bundle.getString("PLACE_ID");
+        pl = bundle.getString("plag");
+        pln= bundle.getString("plng");
+        //Toast.makeText(Details_Main.this,"Checking for : "+pl+" pln :"+pln,Toast.LENGTH_SHORT).show();
         url = "https://maps.googleapis.com/maps/api/place/details/json?placeid="+Id+"&key=AIzaSyB5J0DVdARLzuVMVp7pQlSMYeqtbDAaUuo";
 
         contactList = new ArrayList<>();
@@ -94,10 +98,10 @@ public class Details_Main extends FragmentActivity implements OnMapReadyCallback
             public void onMapReady(GoogleMap googleMap) {
 
                 myGoogleMap = googleMap; // here you set your Google map
-                String tlag = b9.getString("lat");
-                String tlng = b9.getString("lng");
+              //  String tlag = b9.getString("lat");
+               // String tlng = b9.getString("lng");
 
-                goToLocationZoom(Double.parseDouble(tlag),Double.parseDouble(tlng),15);
+                goToLocationZoom(Double.parseDouble(pl),Double.parseDouble(pln),15);
 
                 // here you do the rest of your calculations with your map
             }
@@ -110,7 +114,7 @@ public class Details_Main extends FragmentActivity implements OnMapReadyCallback
     public void GPSIntent(View v)
     {
         Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-                Uri.parse("google.navigation:q=40.7143528,-74.0059731"));
+                Uri.parse("google.navigation:q="+pl+","+pln));
         startActivity(intent);
 
     }
