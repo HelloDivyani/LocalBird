@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TabHost;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -25,7 +26,8 @@ public class Main_Tab extends TabActivity {
         t1=tabhost.newTabSpec("Tab1");
         t1.setContent(R.id.tab1);
         t1.setIndicator("Local");
-        Intent i=new Intent(Main_Tab.this,MainList.class);
+
+            Intent i=new Intent(Main_Tab.this,MainList.class);
         t1.setContent(i);
 
 
@@ -34,6 +36,9 @@ public class Main_Tab extends TabActivity {
         t2.setIndicator("Weather Today");
         Intent i1=new Intent(Main_Tab.this,Weather_MainActivity.class);
         t2.setContent(i1);
+
+       // TextView x = (TextView) tabhost.getTabWidget().getChildAt(0).findViewById(android.R.id.title);
+        //x.setTextSize(25);
 
         tabhost.addTab(t1);
         tabhost.addTab(t2);

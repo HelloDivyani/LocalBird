@@ -83,7 +83,7 @@ public class Details_Main extends FragmentActivity implements OnMapReadyCallback
         pl = bundle.getString("plag");
 
         pln= bundle.getString("plng");
-        Toast.makeText(Details_Main.this," IN oncreate Lat :"+pl+"Long : "+pln,Toast.LENGTH_SHORT).show();
+       // Toast.makeText(Details_Main.this," IN oncreate Lat :"+pl+"Long : "+pln,Toast.LENGTH_SHORT).show();
        // TIMES_SQUARE = new LatLng(Double.parseDouble(pl),Double.parseDouble(pln));
         //Toast.makeText(Details_Main.this,"Checking for : "+pl+" pln :"+pln,Toast.LENGTH_SHORT).show();
         url = "https://maps.googleapis.com/maps/api/place/details/json?placeid="+Id+"&key=AIzaSyB5J0DVdARLzuVMVp7pQlSMYeqtbDAaUuo";
@@ -107,7 +107,7 @@ public class Details_Main extends FragmentActivity implements OnMapReadyCallback
                /* googleMap.addMarker(new MarkerOptions().position(TIMES_SQUARE)
                         .title("Lets Check").snippet("Race Start: 9:00 AM CST")
                         .draggable(true));**/
-                Toast.makeText(Details_Main.this,"On Map Reday Lat :"+pl+"Long : "+pln,Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Details_Main.this,"On Map Reday Lat :"+pl+"Long : "+pln,Toast.LENGTH_SHORT).show();
                 LatLng myMarker = new LatLng(Double.parseDouble(pl),Double.parseDouble(pln));
                 myGoogleMap.addMarker(new MarkerOptions().position(myMarker)
                         .title("Marker"));

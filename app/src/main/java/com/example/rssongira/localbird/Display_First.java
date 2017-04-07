@@ -34,120 +34,103 @@ import java.util.StringTokenizer;
  * Created by RSSongira on 4/1/2017.
  */
 public class Display_First extends AppCompatActivity {
-//    ImageView image;
+    //    ImageView image;
     String icon_url;
     String plag;
     String plng;
-   // String place_lat;
+    // String place_lat;
     //String place_long;
     String type;
-    Bundle b7=new Bundle();
-   protected static String getlat;
+    Bundle b7 = new Bundle();
+    protected static String getlat;
     protected static String getlg;
     protected double lat;
     //Resources res = getResources(); /** from an Activity */
 
-    protected  double lg;
+    protected double lg;
     private String TAG = Display_First.class.getSimpleName();
     private String id;
     private ProgressDialog pDialog;
     private ListView lv;
-    private static  String url;
+    private static String url;
     // URL to get contacts JSON
 
     ArrayList<HashMap<String, String>> contactList;
     // Key-value Pair
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_prepare);
-        lv=(ListView)findViewById(R.id.list);
-  //      image=(ImageView)findViewById(R.id.getImage);
+        lv = (ListView) findViewById(R.id.list);
+        //      image=(ImageView)findViewById(R.id.getImage);
         Intent i5 = getIntent();
-        Bundle b1= i5.getExtras();
-       getlat = b1.getString("Latitude");
+        Bundle b1 = i5.getExtras();
+        getlat = b1.getString("Latitude");
         getlg = b1.getString("Longitude");
-        type= b1.getString("type");
-        if(type.equals("Airport"))
-        {
-            Intent i78 = new Intent(Display_First.this,Airport_Hard.class);
+        type = b1.getString("type");
+        //Toast.makeText(Display_First.this, "Inside Another Class : " + type, Toast.LENGTH_SHORT).show();
+        if (type.equals("Airport")) {
+            Intent i78 = new Intent(Display_First.this, Airport_Hard.class);
             startActivity(i78);
-           // Toast.makeText(Display_First.this,"Ready for Intent",Toast.LENGTH_SHORT).show();
+            // Toast.makeText(Display_First.this,"Ready for Intent",Toast.LENGTH_SHORT).show();
 
         }
-        if(type.equals("Railway"))
-        {
-            Intent i79 = new Intent(Display_First.this,Railway.class);
+        if (type.equals("Railway")) {
+            Intent i79 = new Intent(Display_First.this, Railway.class);
             startActivity(i79);
         }
-        if(type.equals("ATM"))
-        {
+        if (type.equals("ATM")) {
             type = "atm";
         }
-        if(type.equals("Cafe"))
-        {
+        if (type.equals("Cafe")) {
             type = "cafe";
         }
-        if(type.equals("Court"))
-        {
+        if (type.equals("Court")) {
             type = "courthouse";
         }
-        if(type.equals("Fire_Station"))
-        {
+        if (type.equals("Fire_Station")) {
             type = "fire_station";
         }
-        if(type.equals("gym"))
-        {
+        if (type.equals("Gym")) {
             type = "gym";
 
         }
-        if(type.equals("Hospital"))
-        {
+        if (type.equals("Hospital")) {
             type = "hospital";
         }
-        if(type.equals("Library"))
-        {
+        if (type.equals("Library")) {
             type = "library";
         }
-        if(type.equals("Mall"))
-        {
+        if (type.equals("Mall")) {
             type = "shopping_mall";
         }
-        if(type.equals("Movie"))
-        {
+        if (type.equals("Movie")) {
             type = "movie_theater";
         }
-        if(type.equals("Restaurants"))
-        {
+        if (type.equals("Restaurants")) {
             type = "restaurant";
         }
-        if(type.equals("Book_Stores"))
-        {
-            type="book_store";
+        if (type.equals("Book_Stores")) {
+            type = "book_store";
         }
-        if(type.equals("Gas_Station"))
-        {
-            type="gas_station";
+        if (type.equals("Gas_Station")) {
+            type = "gas_station";
         }
-        if(type.equals("Police"))
-        {
-            type="police";
+        if (type.equals("Police")) {
+            type = "police";
         }
-        if(type.equals("Govt_Office"))
-        {
-            type="local_government_office";
+        if (type.equals("Govt_Office")) {
+            type = "local_government_office";
         }
-        if(type.equals("JewelryHouse"))
-        {
-            type="jewelry_store";
+        if (type.equals("JewelryHouse")) {
+            type = "jewelry_store";
         }
 
-       // Toast.makeText(Display_First.this,"Type :"+type,Toast.LENGTH_SHORT).show();
-       // Toast.makeText(Display_First.this,"Inside the display "+type,Toast.LENGTH_SHORT).show();
-         url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+getlat+","+getlg+"&radius=5000&type="+type+"&key=AIzaSyB5J0DVdARLzuVMVp7pQlSMYeqtbDAaUuo";
+        // Toast.makeText(Display_First.this,"Type :"+type,Toast.LENGTH_SHORT).show();
+        // Toast.makeText(Display_First.this,"Inside the display "+type,Toast.LENGTH_SHORT).show();
+        url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + getlat + "," + getlg + "&radius=5000&type=" + type + "&key=AIzaSyB5J0DVdARLzuVMVp7pQlSMYeqtbDAaUuo";
         // list_item_first is the each item structure
         contactList = new ArrayList<>();
         new GetContacts().execute();
@@ -199,12 +182,12 @@ public class Display_First extends AppCompatActivity {
                         plag = c.getJSONObject("geometry").getJSONObject("location").getString("lat");
                         plng = c.getJSONObject("geometry").getJSONObject("location").getString("lng");
                         id = c.getString("place_id");
-                       b7.putString(String.valueOf(i),id);
-                        b7.putString(String.valueOf(i)+"lag",plag);
-                        b7.putString(String.valueOf(i)+"lng",plng);
+                        b7.putString(String.valueOf(i), id);
+                        b7.putString(String.valueOf(i) + "lag", plag);
+                        b7.putString(String.valueOf(i) + "lng", plng);
                         String name = c.getString("name");
                         //String rating = c.getString("rating");
-                         icon_url = c.getString("icon");
+                        icon_url = c.getString("icon");
                         String vicinity = c.getString("vicinity");
 
 
@@ -213,9 +196,12 @@ public class Display_First extends AppCompatActivity {
                         // adding each child node to HashMap key => value
                         contact.put("place_id", id);
                         contact.put("name", name);
-                        contact.put("icon_url",icon_url);
-                      //  contact.put("rating",rating);
-                        contact.put("vicinity",vicinity);
+                        contact.put("check", String.valueOf(i));
+                        contact.put("icon_url", icon_url);
+                        //  contact.put("rating",rating);
+                       // new Download(imageView).execute(icon_url);
+
+                        contact.put("vicinity", vicinity);
 
                         contactList.add(contact);
                     }
@@ -258,31 +244,32 @@ public class Display_First extends AppCompatActivity {
                 pDialog.dismiss();
 
             ListAdapter adapter = new SimpleAdapter(
-                    Display_First.this, contactList,R.layout.list_item_first, new String[]{"name",
+                    Display_First.this, contactList, R.layout.list_item_first, new String[]{"name",
                     "vicinity"}, new int[]{R.id.getName, R.id.getVic});
-                   // new ImageLoadTask("https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png", image).execute();
+            // new ImageLoadTask("https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png", image).execute();
+         //   new Download((ImageView)findViewById(R.id.getImage)).execute(icon_url);
 
 
-                        lv.setAdapter(adapter);
+            lv.setAdapter(adapter);
 
 
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 
-               String PLACE_ID = b7.getString(String.valueOf(arg2));
-                    String pplag = b7.getString(String.valueOf(arg2)+"lag");
-                    String pplng = b7.getString(String.valueOf(arg2)+"lng");
+                    String PLACE_ID = b7.getString(String.valueOf(arg2));
+                    String pplag = b7.getString(String.valueOf(arg2) + "lag");
+                    String pplng = b7.getString(String.valueOf(arg2) + "lng");
                     //Toast.makeText(Display_First.this,"Lets Check ",Toast.LENGTH_SHORT).show();
-                   Intent i=new Intent(Display_First.this, Details_Main.class);
-                   // i.putExtra("PLACE_ID", PLACE_ID);
+                    Intent i = new Intent(Display_First.this, Details_Main.class);
+                    // i.putExtra("PLACE_ID", PLACE_ID);
                     //i.putExtra("plag",pplag);
                     //i.putExtra("plng",pplng);
                     //i.putExtras(b7);
-                    Bundle b11 =new Bundle();
-                    b11.putString("PLACE_ID",PLACE_ID);
-                    b11.putString("plag",pplag);
-                    b11.putString("plng",pplng);
+                    Bundle b11 = new Bundle();
+                    b11.putString("PLACE_ID", PLACE_ID);
+                    b11.putString("plag", pplag);
+                    b11.putString("plng", pplng);
                     i.putExtras(b11);
                     startActivity(i);
 
@@ -293,6 +280,7 @@ public class Display_First extends AppCompatActivity {
         }
 
     }
+
 
     /*public class MainActivity extends AppCompatActivity {
         ListView lv;
@@ -313,7 +301,50 @@ public class Display_First extends AppCompatActivity {
             lv.setAdapter(adapter);
         }
     }**/
+
+
+    private class Download extends AsyncTask<String,Void,Bitmap>
+    {
+        ImageView image;
+        public Download(ImageView image)
+        {
+            this.image = image;
+            Toast.makeText(getApplicationContext(),"Please Wait",Toast.LENGTH_SHORT).show();
+        }
+
+
+        @Override
+        protected Bitmap doInBackground(String... params) {
+            String imageURL = params[0];
+            Bitmap bimage =null;
+            try
+            {
+                InputStream in =new java.net.URL(imageURL).openStream();
+                bimage = BitmapFactory.decodeStream(in);
+
+            }catch(Exception e)
+            {
+                Log.e("Error Message ",e.getMessage());
+                e.printStackTrace();
+
+            }
+            return bimage;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+            super.onPostExecute(bitmap);
+            image.setImageBitmap(bitmap);
+        }
+    }
+
 }
+
+
+
+
+
+
 
 
 

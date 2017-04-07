@@ -56,20 +56,20 @@ public class MainList extends AppCompatActivity implements LocationListener {
     private String desc[] = {
             "get the best comfort",
             "money near you",
-            "book",
+            "company of your best buddy",
             "enjoy time with ur loving one",
             "get justice",
             "get ur firetruck",
-            "gas station",
+            "fill it up",
             "day start with fitness",
             "another god near u",
-            "jewel",
+            "precious jewels",
             "increase ur knowledge",
-            "govt",
+            "that identifies you",
             "enjoy free time",
             "see ur stars",
-            "police",
-            "railway",
+            "the one that protects you",
+            "chu-chu-chu",
             "spend quality time with ur family",
 
 
@@ -79,22 +79,22 @@ public class MainList extends AppCompatActivity implements LocationListener {
     private Integer imageid[] = {
             R.drawable.airport,
             R.drawable.atm,
-            R.drawable.ok,
+            R.drawable.lib,
             R.drawable.cafe,
             R.drawable.court,
-            R.drawable.fire_station,
-            R.drawable.ok,
+            R.drawable.fire,
+            R.drawable.gas,
             R.drawable.gym,
-            R.drawable.hospital,
-            R.drawable.ok,
-            R.drawable.library,
-            R.drawable.ok,
+            R.drawable.hosp,
+            R.drawable.jewel,
+            R.drawable.lib,
+            R.drawable.gov,
             R.drawable.mall,
             R.drawable.movie,
-            R.drawable.ok,
-            R.drawable.ok,
+            R.drawable.police,
+            R.drawable.rail,
             R.drawable.restaurant,
-                };
+    };
 
 
 
@@ -120,7 +120,7 @@ public class MainList extends AppCompatActivity implements LocationListener {
             // txt.setText("Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude());
         } catch (SecurityException e) {
             // dialogGPS(this.getContext()); // lets the user know there is a problem with the gps
-            Toast.makeText(this, "Security Exception", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Security Exception What What next", Toast.LENGTH_SHORT).show();
         }
         try {
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -149,7 +149,7 @@ public class MainList extends AppCompatActivity implements LocationListener {
             longitude=loc.getLongitude();
 
         } catch (Exception e) {
-            Toast.makeText(this,"Security Exception",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Security Exception What ",Toast.LENGTH_SHORT).show();
             // dialogGPS(this.getContext()); // lets the user know there is a problem with the gps
         }
 
@@ -187,6 +187,14 @@ public class MainList extends AppCompatActivity implements LocationListener {
             longitude = loc.getLongitude();
 
     }
+
+
+
+
+
+
+
+
 
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {

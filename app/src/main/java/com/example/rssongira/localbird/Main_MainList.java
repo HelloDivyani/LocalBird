@@ -11,7 +11,7 @@ import android.widget.Toast;
  * Created by RSSongira on 4/4/2017.
  */
 public class Main_MainList extends AppCompatActivity {
-
+/*
     private ListView listView;
     private String names[] = {
             "Airport",
@@ -50,7 +50,7 @@ public class Main_MainList extends AppCompatActivity {
             R.drawable.atm,
             R.drawable.cafe,
             R.drawable.court,
-            R.drawable.fire_station,
+            R.drawable.,
             R.drawable.gym,
             R.drawable.hospital,
             R.drawable.library,
@@ -98,5 +98,5 @@ public class Main_MainList extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }*/
+  **/
 }
