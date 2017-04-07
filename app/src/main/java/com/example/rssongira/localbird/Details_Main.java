@@ -26,6 +26,7 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -50,7 +51,7 @@ public class Details_Main extends FragmentActivity implements OnMapReadyCallback
     private ProgressDialog pDialog;
     //private ListView lv;
     Bundle b9 = new Bundle();
-
+   // private static LatLng TIMES_SQUARE = null;
     // URL to get contacts JSON
     private static String url;
     ArrayList<HashMap<String, String>> contactList;
@@ -80,7 +81,10 @@ public class Details_Main extends FragmentActivity implements OnMapReadyCallback
         Bundle bundle = getIntent().getExtras();
         Id = bundle.getString("PLACE_ID");
         pl = bundle.getString("plag");
+
         pln= bundle.getString("plng");
+        Toast.makeText(Details_Main.this," IN oncreate Lat :"+pl+"Long : "+pln,Toast.LENGTH_SHORT).show();
+       // TIMES_SQUARE = new LatLng(Double.parseDouble(pl),Double.parseDouble(pln));
         //Toast.makeText(Details_Main.this,"Checking for : "+pl+" pln :"+pln,Toast.LENGTH_SHORT).show();
         url = "https://maps.googleapis.com/maps/api/place/details/json?placeid="+Id+"&key=AIzaSyB5J0DVdARLzuVMVp7pQlSMYeqtbDAaUuo";
 
@@ -100,6 +104,16 @@ public class Details_Main extends FragmentActivity implements OnMapReadyCallback
                 myGoogleMap = googleMap; // here you set your Google map
               //  String tlag = b9.getString("lat");
                // String tlng = b9.getString("lng");
+               /* googleMap.addMarker(new MarkerOptions().position(TIMES_SQUARE)
+                        .title("Lets Check").snippet("Race Start: 9:00 AM CST")
+                        .draggable(true));**/
+                Toast.makeText(Details_Main.this,"On Map Reday Lat :"+pl+"Long : "+pln,Toast.LENGTH_SHORT).show();
+                LatLng myMarker = new LatLng(Double.parseDouble(pl),Double.parseDouble(pln));
+                myGoogleMap.addMarker(new MarkerOptions().position(myMarker)
+                        .title("Marker"));
+                googleMap.moveCamera(CameraUpdateFactory.newLatLng(myMarker));
+
+
 
                 goToLocationZoom(Double.parseDouble(pl),Double.parseDouble(pln),15);
 
@@ -113,6 +127,7 @@ public class Details_Main extends FragmentActivity implements OnMapReadyCallback
 
     public void GPSIntent(View v)
     {
+        Toast.makeText(Details_Main.this," GPS CLICK Lat :"+pl+"Long : "+pln,Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
                 Uri.parse("google.navigation:q="+pl+","+pln));
         startActivity(intent);
@@ -152,6 +167,7 @@ public class Details_Main extends FragmentActivity implements OnMapReadyCallback
         // Camera Update defines Camera move Used using CameraUpdateFactory
 
     }
+
     private void goToLocation(double lat, double lg)
     {
         LatLng ll = new LatLng(lat,lg);

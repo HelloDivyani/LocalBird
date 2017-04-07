@@ -34,31 +34,44 @@ public class MainList extends AppCompatActivity implements LocationListener {
     private String names[] = {
             "Airport",
             "ATM",
+            "Book_Stores",
             "Cafe",
             "Court",
             "Fire_Station",
-            "gym",
+            "Gas_Station",
+            "Gym",
             "Hospital",
+            "JewelryHouse",
             "Library",
+            "Govt_Office",
             "Mall",
             "Movie",
-            "restaurants",
-            "Zoo"
+            "Police",
+            "Railway",
+            "Restaurants",
+
+
     };
 
     private String desc[] = {
             "get the best comfort",
             "money near you",
+            "book",
             "enjoy time with ur loving one",
             "get justice",
             "get ur firetruck",
+            "gas station",
             "day start with fitness",
             "another god near u",
+            "jewel",
             "increase ur knowledge",
+            "govt",
             "enjoy free time",
             "see ur stars",
+            "police",
+            "railway",
             "spend quality time with ur family",
-            "spend time with nature"
+
 
     };
 
@@ -66,19 +79,22 @@ public class MainList extends AppCompatActivity implements LocationListener {
     private Integer imageid[] = {
             R.drawable.airport,
             R.drawable.atm,
+            R.drawable.ok,
             R.drawable.cafe,
             R.drawable.court,
             R.drawable.fire_station,
+            R.drawable.ok,
             R.drawable.gym,
             R.drawable.hospital,
+            R.drawable.ok,
             R.drawable.library,
+            R.drawable.ok,
             R.drawable.mall,
             R.drawable.movie,
+            R.drawable.ok,
+            R.drawable.ok,
             R.drawable.restaurant,
-            R.drawable.zoo
-
-
-    };
+                };
 
 
 
@@ -146,6 +162,7 @@ public class MainList extends AppCompatActivity implements LocationListener {
                 // Creating a bundle Object
                 Bundle b= new Bundle();
                 // Storing Data into Bundle
+
                 b.putString("type",names[i]);
                 b.putString("Latitude", String.valueOf(latitude));
                 b.putString("Longitude", String.valueOf(longitude));

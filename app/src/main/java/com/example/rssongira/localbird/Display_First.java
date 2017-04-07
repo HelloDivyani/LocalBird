@@ -71,8 +71,83 @@ public class Display_First extends AppCompatActivity {
        getlat = b1.getString("Latitude");
         getlg = b1.getString("Longitude");
         type= b1.getString("type");
-        Toast.makeText(Display_First.this,"Inside the display "+type,Toast.LENGTH_SHORT).show();
-         url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+getlat+","+getlg+"&radius=900&type="+type+"&key=AIzaSyB5J0DVdARLzuVMVp7pQlSMYeqtbDAaUuo";
+        if(type.equals("Airport"))
+        {
+            Intent i78 = new Intent(Display_First.this,Airport_Hard.class);
+            startActivity(i78);
+           // Toast.makeText(Display_First.this,"Ready for Intent",Toast.LENGTH_SHORT).show();
+
+        }
+        if(type.equals("Railway"))
+        {
+            Intent i79 = new Intent(Display_First.this,Railway.class);
+            startActivity(i79);
+        }
+        if(type.equals("ATM"))
+        {
+            type = "atm";
+        }
+        if(type.equals("Cafe"))
+        {
+            type = "cafe";
+        }
+        if(type.equals("Court"))
+        {
+            type = "courthouse";
+        }
+        if(type.equals("Fire_Station"))
+        {
+            type = "fire_station";
+        }
+        if(type.equals("gym"))
+        {
+            type = "gym";
+
+        }
+        if(type.equals("Hospital"))
+        {
+            type = "hospital";
+        }
+        if(type.equals("Library"))
+        {
+            type = "library";
+        }
+        if(type.equals("Mall"))
+        {
+            type = "shopping_mall";
+        }
+        if(type.equals("Movie"))
+        {
+            type = "movie_theater";
+        }
+        if(type.equals("Restaurants"))
+        {
+            type = "restaurant";
+        }
+        if(type.equals("Book_Stores"))
+        {
+            type="book_store";
+        }
+        if(type.equals("Gas_Station"))
+        {
+            type="gas_station";
+        }
+        if(type.equals("Police"))
+        {
+            type="police";
+        }
+        if(type.equals("Govt_Office"))
+        {
+            type="local_government_office";
+        }
+        if(type.equals("JewelryHouse"))
+        {
+            type="jewelry_store";
+        }
+
+       // Toast.makeText(Display_First.this,"Type :"+type,Toast.LENGTH_SHORT).show();
+       // Toast.makeText(Display_First.this,"Inside the display "+type,Toast.LENGTH_SHORT).show();
+         url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+getlat+","+getlg+"&radius=5000&type="+type+"&key=AIzaSyB5J0DVdARLzuVMVp7pQlSMYeqtbDAaUuo";
         // list_item_first is the each item structure
         contactList = new ArrayList<>();
         new GetContacts().execute();
@@ -184,7 +259,7 @@ public class Display_First extends AppCompatActivity {
 
             ListAdapter adapter = new SimpleAdapter(
                     Display_First.this, contactList,R.layout.list_item_first, new String[]{"name",
-                    "vicinity","icon_url"}, new int[]{R.id.getName, R.id.getVic,R.id.getImage});
+                    "vicinity"}, new int[]{R.id.getName, R.id.getVic});
                    // new ImageLoadTask("https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png", image).execute();
 
 

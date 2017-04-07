@@ -44,6 +44,9 @@
         <activity android:name=".Details_Main"></activity>
         <activity android:name=".Maps_Main"></activity>
         <activity android:name=".Main_MainList"></activity>
+        <activity android:name=".Airport_Hard"></activity>
+        <activity android:name=".Railway"></activity>
+
     </application>
 
 </manifest>
