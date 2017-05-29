@@ -34,5 +34,6 @@ are searching and your current Location Also provide the radius upto which searc
 -------------------------------------------------------------------------------------------------------------------------------
 Layouts Obtained : 
 
-To be continued ...
+[Screenshots]C:\Users\Divyani\Desktop\Reliance JIo\screen\p1.png
+
 
