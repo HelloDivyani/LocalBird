@@ -35,5 +35,11 @@ are searching and your current Location Also provide the radius upto which searc
 Layouts Obtained : 
 
 ![Screenshots](/p1.png)
-
-
+![Screenshots](/p2.png)
+![Screenshots](/p3.png)
+![Screenshots](/p4.png)
+![Screenshots](/p5.png)
+![Screenshots](/p6.png)
+![Screenshots](/p7.png)
+![Screenshots](/p8.png)
+![Screenshots](/p9.png)
