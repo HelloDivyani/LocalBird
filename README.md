@@ -34,6 +34,6 @@ are searching and your current Location Also provide the radius upto which searc
 -------------------------------------------------------------------------------------------------------------------------------
 Layouts Obtained : 
 
-[Screenshots]/p1.png
+![Screenshots](/p1.png)
 
 
